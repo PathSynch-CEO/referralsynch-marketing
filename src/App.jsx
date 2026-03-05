@@ -6,6 +6,21 @@ import Home from './pages/index';
 const Pricing = lazy(() => import('./pages/pricing'));
 const Signup = lazy(() => import('./pages/signup'));
 
+// Compare pages
+const CompareIndex = lazy(() => import('./pages/compare/index'));
+const VsReferralCandy = lazy(() => import('./pages/compare/referralcandy'));
+const VsSmileIO = lazy(() => import('./pages/compare/smile-io'));
+const VsFriendbuy = lazy(() => import('./pages/compare/friendbuy'));
+const VsUpPromote = lazy(() => import('./pages/compare/uppromote'));
+
+// Industry pages
+const IndustriesIndex = lazy(() => import('./pages/industries/index'));
+const RetailIndustry = lazy(() => import('./pages/industries/retail'));
+const BeautyIndustry = lazy(() => import('./pages/industries/beauty-wellness'));
+const FoodBeverageIndustry = lazy(() => import('./pages/industries/food-beverage'));
+const HomeServicesIndustry = lazy(() => import('./pages/industries/home-services'));
+const EcommerceIndustry = lazy(() => import('./pages/industries/ecommerce'));
+
 function App() {
   return (
     <>
@@ -15,20 +30,20 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* Compare routes (coming soon) */}
-          {/* <Route path="/compare" element={<CompareIndex />} /> */}
-          {/* <Route path="/compare/referralcandy" element={<VsReferralCandy />} /> */}
-          {/* <Route path="/compare/smile-io" element={<VsSmileIO />} /> */}
-          {/* <Route path="/compare/friendbuy" element={<VsFriendbuy />} /> */}
-          {/* <Route path="/compare/uppromote" element={<VsUpPromote />} /> */}
+          {/* Compare routes */}
+          <Route path="/compare" element={<CompareIndex />} />
+          <Route path="/compare/referralcandy" element={<VsReferralCandy />} />
+          <Route path="/compare/smile-io" element={<VsSmileIO />} />
+          <Route path="/compare/friendbuy" element={<VsFriendbuy />} />
+          <Route path="/compare/uppromote" element={<VsUpPromote />} />
 
-          {/* Industry routes (coming soon) */}
-          {/* <Route path="/industries" element={<IndustriesIndex />} /> */}
-          {/* <Route path="/industries/retail" element={<Retail />} /> */}
-          {/* <Route path="/industries/beauty-wellness" element={<Beauty />} /> */}
-          {/* <Route path="/industries/food-beverage" element={<FoodBeverage />} /> */}
-          {/* <Route path="/industries/home-services" element={<HomeServices />} /> */}
-          {/* <Route path="/industries/ecommerce" element={<Ecommerce />} /> */}
+          {/* Industry routes */}
+          <Route path="/industries" element={<IndustriesIndex />} />
+          <Route path="/industries/retail" element={<RetailIndustry />} />
+          <Route path="/industries/beauty-wellness" element={<BeautyIndustry />} />
+          <Route path="/industries/food-beverage" element={<FoodBeverageIndustry />} />
+          <Route path="/industries/home-services" element={<HomeServicesIndustry />} />
+          <Route path="/industries/ecommerce" element={<EcommerceIndustry />} />
         </Routes>
       </Suspense>
 
