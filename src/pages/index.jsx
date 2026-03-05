@@ -7,6 +7,7 @@ import { theme } from '../theme';
 import EnhancedNavigation from '../components/Navigation';
 import PathSynchEcosystemSection from '../components/PathSynchEcosystem';
 import Footer from '../components/Footer';
+import CapabilitiesSection from '../components/CapabilitiesSection';
 
 // =============================================================================
 // HOOKS
@@ -660,202 +661,6 @@ const BrandStorySection = () => {
 };
 
 // =============================================================================
-// FEATURES SECTION
-// =============================================================================
-const FeaturesSection = () => {
-  const features = [
-    {
-      number: '01',
-      title: 'Physical Meets Digital',
-      subtitle: 'QR & NFC Attribution',
-      description: 'Track referrals from business cards, receipts, table tents, and NFC-enabled materials. Know exactly which physical touchpoint drove each conversion.',
-      icon: QrCode,
-      stats: [
-        { value: '3x', label: 'higher conversion' },
-        { value: '100%', label: 'attribution accuracy' },
-      ],
-    },
-    {
-      number: '02',
-      title: 'Enterprise Security',
-      subtitle: '13+ Fraud Detection Types',
-      description: 'Self-referrals, VPN detection, velocity abuse, disposable emails, device fingerprinting, payment matching, and behavioral analysis. All automated.',
-      icon: Shield,
-      stats: [
-        { value: '90+', label: 'risk score threshold' },
-        { value: '0.1%', label: 'fraud rate' },
-      ],
-    },
-    {
-      number: '03',
-      title: 'Automated Payouts',
-      subtitle: 'Stripe Connect Integration',
-      description: 'Advocates connect their bank account once, then receive instant automated payouts. No gift cards, no manual transfers, no friction.',
-      icon: CreditCard,
-      stats: [
-        { value: '2-3', label: 'days to payout' },
-        { value: '$10', label: 'minimum threshold' },
-      ],
-    },
-  ];
-
-  return (
-    <section
-      id="features"
-      style={{
-        backgroundColor: theme.colors.warmWhite,
-        padding: '120px 0',
-      }}
-    >
-      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '0 32px' }}>
-        <header style={{ maxWidth: 600, marginBottom: 80 }}>
-          <p style={{
-            fontFamily: theme.fonts.body,
-            fontSize: theme.fontSize.sm,
-            fontWeight: 600,
-            color: theme.colors.sage,
-            textTransform: 'uppercase',
-            letterSpacing: '0.15em',
-            marginBottom: 16,
-          }}>
-            Capabilities
-          </p>
-          <h2 style={{
-            fontFamily: theme.fonts.display,
-            fontSize: theme.fontSize['3xl'],
-            fontWeight: 500,
-            color: theme.colors.ink,
-            lineHeight: 1.15,
-          }}>
-            Everything you need,{' '}
-            <em style={{ fontStyle: 'italic', color: theme.colors.forest }}>nothing you don't</em>
-          </h2>
-        </header>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 100 }}>
-          {features.map((feature, i) => {
-            const [ref, isInView] = useInView();
-            return (
-              <article
-                key={feature.number}
-                ref={ref}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(12, 1fr)',
-                  gap: 48,
-                  alignItems: 'center',
-                  opacity: isInView ? 1 : 0,
-                  transform: isInView ? 'translateY(0)' : 'translateY(40px)',
-                  transition: 'all 0.8s ease',
-                }}
-              >
-                <div style={{ 
-                  gridColumn: i % 2 === 0 ? '1 / 6' : '8 / 13', 
-                  order: i % 2 === 0 ? 1 : 2 
-                }}>
-                  <span style={{
-                    fontFamily: theme.fonts.display,
-                    fontSize: 56,
-                    fontWeight: 400,
-                    color: theme.colors.mint,
-                    lineHeight: 1,
-                  }}>
-                    {feature.number}
-                  </span>
-                  <p style={{
-                    fontFamily: theme.fonts.body,
-                    fontSize: theme.fontSize.sm,
-                    fontWeight: 600,
-                    color: theme.colors.sage,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: 8,
-                    marginTop: 16,
-                  }}>
-                    {feature.subtitle}
-                  </p>
-                  <h3 style={{
-                    fontFamily: theme.fonts.display,
-                    fontSize: theme.fontSize['2xl'],
-                    fontWeight: 500,
-                    color: theme.colors.ink,
-                    marginBottom: 20,
-                  }}>
-                    {feature.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: theme.fonts.body,
-                    fontSize: theme.fontSize.base,
-                    color: theme.colors.charcoal,
-                    lineHeight: 1.7,
-                    marginBottom: 32,
-                  }}>
-                    {feature.description}
-                  </p>
-
-                  <div style={{ display: 'flex', gap: 48 }}>
-                    {feature.stats.map((stat, j) => (
-                      <div key={j}>
-                        <span style={{
-                          fontFamily: theme.fonts.display,
-                          fontSize: 32,
-                          fontWeight: 500,
-                          color: theme.colors.forest,
-                        }}>
-                          {stat.value}
-                        </span>
-                        <span style={{
-                          display: 'block',
-                          fontFamily: theme.fonts.body,
-                          fontSize: 12,
-                          color: theme.colors.slate,
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          marginTop: 4,
-                        }}>
-                          {stat.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div style={{ 
-                  gridColumn: i % 2 === 0 ? '7 / 13' : '1 / 7', 
-                  order: i % 2 === 0 ? 2 : 1 
-                }}>
-                  <div style={{
-                    aspectRatio: '4/3',
-                    backgroundColor: theme.colors.cream,
-                    borderRadius: 24,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: `1px solid ${theme.colors.mint}`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{
-                      position: 'absolute',
-                      width: 200,
-                      height: 200,
-                      borderRadius: '50%',
-                      border: `1px solid ${theme.colors.mint}`,
-                      opacity: 0.3,
-                    }} />
-                    <feature.icon size={80} color={theme.colors.forest} strokeWidth={1} />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// =============================================================================
 // MAJOR CTA SECTION (Antavo-style)
 // =============================================================================
 const MajorCTASection = () => {
@@ -1136,7 +941,7 @@ const ReferralSynchMarketing = () => (
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <BrandStorySection />
-        <FeaturesSection />
+        <CapabilitiesSection />
         <PathSynchEcosystemSection />
         <MajorCTASection />
         <PricingSection />

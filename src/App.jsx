@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import Home from './pages/index';
 
 const Pricing = lazy(() => import('./pages/pricing'));
+const Signup = lazy(() => import('./pages/signup'));
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/signup" element={<Signup />} />
 
           {/* Compare routes (coming soon) */}
           {/* <Route path="/compare" element={<CompareIndex />} /> */}
@@ -55,6 +57,11 @@ function App() {
           to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
           html { scroll-behavior: auto; }
@@ -62,6 +69,11 @@ function App() {
 
         @media (max-width: 1024px) {
           .story-grid { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 900px) {
+          .signup-grid { grid-template-columns: 1fr !important; }
+          .signup-grid > div:last-child { display: none; }
         }
 
         @media (max-width: 768px) {
