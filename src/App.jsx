@@ -7,6 +7,11 @@ const Pricing = lazy(() => import('./pages/pricing'));
 const Signup = lazy(() => import('./pages/signup'));
 const Demo = lazy(() => import('./pages/demo'));
 const Login = lazy(() => import('./pages/login'));
+const About = lazy(() => import('./pages/about'));
+const Contact = lazy(() => import('./pages/contact'));
+const Privacy = lazy(() => import('./pages/privacy'));
+const Terms = lazy(() => import('./pages/terms'));
+const Security = lazy(() => import('./pages/security'));
 
 // Compare pages
 const CompareIndex = lazy(() => import('./pages/compare/index'));
@@ -33,6 +38,11 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/security" element={<Security />} />
 
           {/* Compare routes */}
           <Route path="/compare" element={<CompareIndex />} />

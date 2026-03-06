@@ -10,7 +10,7 @@ const Footer = () => {
         { name: 'Features', href: '/#features' },
         { name: 'Pricing', href: '/pricing' },
         { name: 'ROI Calculator', href: '/pricing#calculator' },
-        { name: 'Integrations', href: '/integrations' },
+        { name: 'Book a Demo', href: '/demo' },
       ],
     },
     {
@@ -33,21 +33,10 @@ const Footer = () => {
       ],
     },
     {
-      title: 'Resources',
-      links: [
-        { name: 'Blog', href: '/blog' },
-        { name: 'Case Studies', href: '/cases' },
-        { name: 'Help Center', href: '/help' },
-        { name: 'API Docs', href: '/docs' },
-      ],
-    },
-    {
       title: 'Company',
       links: [
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
-        { name: 'Careers', href: '/careers' },
-        { name: 'Press', href: '/press' },
       ],
     },
     {
@@ -126,7 +115,7 @@ const Footer = () => {
           {/* Link Columns */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(6, 1fr)',
+            gridTemplateColumns: 'repeat(5, 1fr)',
             gap: 24,
           }}>
             {footerSections.map((section) => (
