@@ -5,6 +5,7 @@ import Home from './pages/index';
 
 const Pricing = lazy(() => import('./pages/pricing'));
 const Signup = lazy(() => import('./pages/signup'));
+const Demo = lazy(() => import('./pages/demo'));
 
 // Compare pages
 const CompareIndex = lazy(() => import('./pages/compare/index'));
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/demo" element={<Demo />} />
 
           {/* Compare routes */}
           <Route path="/compare" element={<CompareIndex />} />
