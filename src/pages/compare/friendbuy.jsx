@@ -21,10 +21,10 @@ const VsFriendbuy = () => {
   ];
 
   const faqs = [
-    { question: 'How does ReferralSynch compare to Friendbuy for enterprise features?', answer: "Friendbuy is built for enterprise brands with custom pricing starting at $1,000+/month plus success fees. ReferralSynch offers comparable enterprise features (fraud detection, API access, white-labeling) at SMB-friendly pricing starting at $29/month with no success fees." },
+    { question: 'How does ReferralSynch compare to Friendbuy for enterprise features?', answer: "Friendbuy is built for enterprise brands with custom pricing starting at $1,000+/month plus success fees. ReferralSynch offers comparable enterprise features (fraud detection, API access, white-labeling) at SMB-friendly pricing — start free and scale to Pro at $179/month with no success fees." },
     { question: 'Does ReferralSynch have the same fraud protection as Friendbuy?', answer: "Yes, and more. ReferralSynch offers 13+ fraud detection types including VPN detection, velocity abuse, device fingerprinting, and behavioral analysis. Our fraud detection is on par with Friendbuy's enterprise offering, but included in all plans." },
     { question: 'Why is ReferralSynch so much cheaper than Friendbuy?', answer: "Friendbuy targets enterprise brands and charges accordingly. ReferralSynch was built for local businesses and SMBs, with efficient cloud architecture that keeps costs low. We don't charge success fees because we believe you shouldn't pay extra for being successful." },
-    { question: 'Can small businesses use Friendbuy?', answer: "Friendbuy focuses on enterprise customers and doesn't publish pricing—you need to contact sales. Their minimum contracts typically start at $1,000+/month. ReferralSynch is designed for businesses of all sizes with transparent, self-serve pricing." },
+    { question: 'Can small businesses use Friendbuy?', answer: "Friendbuy focuses on enterprise customers and doesn't publish pricing—you need to contact sales. Their minimum contracts typically start at $1,000+/month. ReferralSynch is designed for businesses of all sizes — start free, then upgrade as you grow." },
     { question: "What does ReferralSynch have that Friendbuy doesn't?", answer: "Physical QR/NFC attribution for tracking real-world referrals, full gamification with 5 tiers and 20+ achievements, automated Stripe Connect payouts to advocates' bank accounts, and self-serve setup with pricing that doesn't require a sales call." },
   ];
 

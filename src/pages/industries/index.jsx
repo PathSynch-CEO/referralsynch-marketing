@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Store, Scissors, Coffee, Home, ShoppingBag } from 'lucide-react';
+import { ArrowRight, Store, Scissors, Coffee, Home, ShoppingBag, Wrench, Dumbbell, Briefcase } from 'lucide-react';
 import { theme } from '../../theme';
 import { IndustryPageLayout, IndustryStickyHeader, IndustryCTASection } from '../../components/IndustryShared';
 import SEOHead from '../../components/SEOHead';
@@ -10,14 +10,17 @@ const IndustriesIndex = () => {
     { icon: Scissors, name: 'Beauty & Wellness', tagline: 'Fill your appointment book through word-of-mouth', href: '/industries/beauty-wellness', color: '#EC4899' },
     { icon: Coffee, name: 'Food & Beverage', tagline: 'Turn diners into ambassadors for your restaurant', href: '/industries/food-beverage', color: '#F59E0B' },
     { icon: Home, name: 'Home Services', tagline: 'Grow your contractor business through neighbor referrals', href: '/industries/home-services', color: '#3B82F6' },
-    { icon: ShoppingBag, name: 'eCommerce', tagline: 'Build a referral engine with fraud protection built-in', href: '/industries/ecommerce', color: '#8B5CF6' },
+    { icon: Wrench, name: 'Auto Services', tagline: 'Turn oil changes and repairs into referral opportunities', href: '/industries/auto-services', color: '#F97316' },
+    { icon: Dumbbell, name: 'Fitness Studios', tagline: 'Turn members into your best recruiting tool', href: '/industries/fitness', color: '#8B5CF6' },
+    { icon: Briefcase, name: 'Professional Services', tagline: 'Turn client satisfaction into high-value referrals', href: '/industries/professional-services', color: '#0EA5E9' },
+    { icon: ShoppingBag, name: 'eCommerce', tagline: 'Build a referral engine with fraud protection built-in', href: '/industries/ecommerce', color: '#7C3AED' },
   ];
 
   return (
     <IndustryPageLayout>
       <SEOHead
         title="Referral Marketing by Industry | ReferralSynch"
-        description="See how businesses in retail, beauty, food & beverage, home services, and eCommerce use ReferralSynch to grow through word-of-mouth referrals."
+        description="See how businesses in retail, beauty, food & beverage, home services, auto services, fitness, professional services, and eCommerce use ReferralSynch to grow through word-of-mouth referrals."
         canonical="https://referralsynch.com/industries"
       />
       <IndustryStickyHeader industry="" />

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   QrCode, Shield, CreditCard, Check,
-  ArrowRight, Play, ChevronDown, Pause, Volume2, VolumeX, Phone
+  ArrowRight, Play, ChevronDown, Pause, Volume2, VolumeX, Phone,
+  Star, Quote
 } from 'lucide-react';
 import { theme } from '../theme';
 import EnhancedNavigation from '../components/Navigation';
@@ -106,7 +107,7 @@ const HeroSection = () => {
               letterSpacing: '0.15em',
               marginBottom: 24,
             }}>
-              Referral Marketing Platform
+              Tap. Refer. Reward. Repeat.
             </p>
 
             <h1 style={{
@@ -117,9 +118,8 @@ const HeroSection = () => {
               lineHeight: 1.1,
               marginBottom: 32,
             }}>
-              Turn satisfied customers into your most{' '}
-              <em style={{ fontStyle: 'italic', color: theme.colors.forest }}>persuasive</em>{' '}
-              advocates
+              Every customer is a{' '}
+              <em style={{ fontStyle: 'italic', color: theme.colors.forest }}>sales channel</em>
             </h1>
 
             <p style={{
@@ -130,8 +130,9 @@ const HeroSection = () => {
               marginBottom: 40,
               maxWidth: 520,
             }}>
-              The only referral platform with physical QR/NFC tracking, 
-              enterprise-grade fraud detection, and automated Stripe payouts.
+              Referrals you can actually measure. The only platform with physical
+              QR/NFC tracking, 13+ fraud checks, and automated Stripe payouts —
+              built for local businesses that grow through word of mouth.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
@@ -149,7 +150,7 @@ const HeroSection = () => {
                 textDecoration: 'none',
                 transition: 'all 0.2s',
               }}>
-                Start 14-Day Free Trial
+                Start Free — No Card Required
                 <ArrowRight size={18} />
               </a>
 
@@ -661,6 +662,174 @@ const BrandStorySection = () => {
 };
 
 // =============================================================================
+// SOCIAL PROOF SECTION
+// =============================================================================
+const SocialProofSection = () => {
+  const [ref, isInView] = useInView();
+
+  const testimonials = [
+    {
+      quote: 'We put QR codes on our shopping bags and receipts. Within 3 months, referrals became our #2 acquisition channel.',
+      name: 'Sarah Chen',
+      role: 'Owner, Urban Threads Boutique',
+      stat: '+340%',
+      statLabel: 'referral increase',
+    },
+    {
+      quote: 'The fraud detection alone saved us thousands. We were losing money to self-referral abuse before switching to ReferralSynch.',
+      name: 'Marcus Williams',
+      role: 'Owner, The Grooming Lounge',
+      stat: '52',
+      statLabel: 'new clients/month',
+    },
+    {
+      quote: 'Our technicians hand out referral cards on every job. We can track exactly which tech drives the most referrals.',
+      name: 'James Crawford',
+      role: 'Owner, Crawford Plumbing & HVAC',
+      stat: '$47K',
+      statLabel: 'in referral jobs',
+    },
+  ];
+
+  const trustMetrics = [
+    { value: '0.1%', label: 'Fraud rate (vs 3% industry avg)' },
+    { value: '<10 min', label: 'Average setup time' },
+    { value: '3x', label: 'More referrals vs basic programs' },
+    { value: '$0', label: 'Success fees — ever' },
+  ];
+
+  return (
+    <section
+      ref={ref}
+      style={{
+        backgroundColor: theme.colors.warmWhite,
+        padding: '120px 0',
+        position: 'relative',
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
+        {/* Header */}
+        <header style={{
+          textAlign: 'center', marginBottom: 64,
+          opacity: isInView ? 1 : 0,
+          transform: isInView ? 'translateY(0)' : 'translateY(20px)',
+          transition: 'all 0.6s ease',
+        }}>
+          <p style={{
+            fontFamily: theme.fonts.body,
+            fontSize: theme.fontSize.sm,
+            fontWeight: 600,
+            color: theme.colors.sage,
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            marginBottom: 16,
+          }}>
+            Trusted by Local Businesses
+          </p>
+          <h2 style={{
+            fontFamily: theme.fonts.display,
+            fontSize: theme.fontSize['3xl'],
+            fontWeight: 500,
+            color: theme.colors.ink,
+          }}>
+            Real results from{' '}
+            <em style={{ fontStyle: 'italic', color: theme.colors.forest }}>real businesses</em>
+          </h2>
+        </header>
+
+        {/* Testimonial Cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 24,
+          marginBottom: 64,
+        }}>
+          {testimonials.map((t, i) => (
+            <article
+              key={i}
+              style={{
+                backgroundColor: theme.colors.cream,
+                borderRadius: 20,
+                padding: 32,
+                border: `1px solid ${theme.colors.mint}`,
+                opacity: isInView ? 1 : 0,
+                transform: isInView ? 'translateY(0)' : 'translateY(20px)',
+                transition: `all 0.6s ease ${i * 150}ms`,
+              }}
+            >
+              <div style={{ display: 'flex', gap: 4, marginBottom: 16 }}>
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} size={16} color={theme.colors.gold} fill={theme.colors.gold} />
+                ))}
+              </div>
+              <p style={{
+                fontFamily: theme.fonts.body,
+                fontSize: 15,
+                color: theme.colors.charcoal,
+                lineHeight: 1.7,
+                marginBottom: 24,
+                fontStyle: 'italic',
+              }}>
+                "{t.quote}"
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div>
+                  <p style={{ fontFamily: theme.fonts.body, fontSize: 15, fontWeight: 600, color: theme.colors.ink, margin: 0 }}>
+                    {t.name}
+                  </p>
+                  <p style={{ fontFamily: theme.fonts.body, fontSize: 13, color: theme.colors.slate, margin: 0, marginTop: 2 }}>
+                    {t.role}
+                  </p>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontFamily: theme.fonts.display, fontSize: 28, fontWeight: 500, color: theme.colors.forest }}>
+                    {t.stat}
+                  </div>
+                  <div style={{ fontFamily: theme.fonts.body, fontSize: 12, color: theme.colors.slate }}>
+                    {t.statLabel}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Trust Metrics Bar */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 24,
+          backgroundColor: theme.colors.forest,
+          borderRadius: 20,
+          padding: '40px 48px',
+        }}>
+          {trustMetrics.map((m, i) => (
+            <div key={i} style={{ textAlign: 'center' }}>
+              <div style={{
+                fontFamily: theme.fonts.display,
+                fontSize: 36,
+                fontWeight: 500,
+                color: theme.colors.warmWhite,
+                marginBottom: 4,
+              }}>
+                {m.value}
+              </div>
+              <div style={{
+                fontFamily: theme.fonts.body,
+                fontSize: 14,
+                color: 'rgba(255,255,255,0.7)',
+              }}>
+                {m.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =============================================================================
 // MAJOR CTA SECTION (Antavo-style)
 // =============================================================================
 const MajorCTASection = () => {
@@ -715,10 +884,10 @@ const MajorCTASection = () => {
             lineHeight: 1.2,
             marginBottom: 20,
           }}>
-            Ready to turn your customers into your{' '}
-            <em style={{ fontStyle: 'italic' }}>best salespeople?</em>
+            Ready to make every customer a{' '}
+            <em style={{ fontStyle: 'italic' }}>growth engine?</em>
           </h2>
-          
+
           <p style={{
             fontFamily: theme.fonts.body,
             fontSize: theme.fontSize.lg,
@@ -726,8 +895,8 @@ const MajorCTASection = () => {
             lineHeight: 1.6,
             marginBottom: 40,
           }}>
-            Our team can answer all your questions, walk you through the platform, 
-            and help you design a referral program that actually works.
+            Start free today — no credit card required. Or book a demo and
+            we'll design a referral program tailored to your business.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
@@ -786,24 +955,31 @@ const MajorCTASection = () => {
 const PricingSection = () => {
   const plans = [
     {
+      name: 'Free',
+      price: 0,
+      description: 'Get started with referrals — no credit card needed',
+      features: ['1 campaign', '50 advocates', 'QR tracking', 'Basic fraud checks', 'Email support'],
+      highlighted: false,
+    },
+    {
       name: 'Starter',
       price: 29,
-      description: 'For small businesses beginning their referral journey',
-      features: ['1 campaign', '100 advocates', 'QR tracking', 'Email support'],
+      description: 'For small businesses growing through referrals',
+      features: ['3 campaigns', '200 advocates', 'QR + NFC tracking', 'Full fraud detection', 'Stripe payouts'],
       highlighted: false,
     },
     {
       name: 'Growth',
       price: 69,
-      description: 'For growing businesses ready to scale',
-      features: ['5 campaigns', '500 advocates', 'QR + NFC tracking', 'Stripe payouts', '5-tier gamification', 'Priority support'],
+      description: 'For businesses ready to scale word of mouth',
+      features: ['10 campaigns', '1,000 advocates', 'Gamification suite', 'Klaviyo + Zapier', 'Priority support'],
       highlighted: true,
     },
     {
-      name: 'Scale',
+      name: 'Pro',
       price: 179,
-      description: 'For established businesses with high volume',
-      features: ['Unlimited campaigns', '2,000 advocates', 'Everything in Growth', 'API access', 'White-label portal'],
+      description: 'For high-volume referral programs',
+      features: ['Unlimited campaigns', '5,000 advocates', 'White-label portal', 'API access', 'Dedicated CSM'],
       highlighted: false,
     },
   ];
@@ -836,13 +1012,13 @@ const PricingSection = () => {
             fontSize: theme.fontSize.base,
             color: 'rgba(255,255,255,0.7)',
           }}>
-            No hidden fees. No success fees. 14-day free trial on all plans.
+            No hidden fees. No success fees. Start free and upgrade when you're ready.
           </p>
         </header>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: 24,
         }}>
           {plans.map((plan) => (
@@ -879,9 +1055,9 @@ const PricingSection = () => {
               </h3>
               <div style={{ marginBottom: 8 }}>
                 <span style={{ fontFamily: theme.fonts.display, fontSize: 48, fontWeight: 500 }}>
-                  ${plan.price}
+                  {plan.price === 0 ? 'Free' : `$${plan.price}`}
                 </span>
-                <span style={{ color: 'rgba(255,255,255,0.7)' }}>/month</span>
+                {plan.price > 0 && <span style={{ color: 'rgba(255,255,255,0.7)' }}>/month</span>}
               </div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginBottom: 32 }}>
                 {plan.description}
@@ -902,7 +1078,7 @@ const PricingSection = () => {
                 textDecoration: 'none',
                 marginBottom: 32,
               }}>
-                Start Free Trial
+                {plan.price === 0 ? 'Get Started Free' : 'Start Free Trial'}
               </a>
 
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -942,6 +1118,7 @@ const ReferralSynchMarketing = () => (
         <HeroSection />
         <BrandStorySection />
         <CapabilitiesSection />
+        <SocialProofSection />
         <PathSynchEcosystemSection />
         <MajorCTASection />
         <PricingSection />

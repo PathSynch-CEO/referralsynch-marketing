@@ -25,7 +25,7 @@ const VsUpPromote = () => {
     { question: 'Does ReferralSynch work with Shopify?', answer: "Yes! ReferralSynch integrates with Shopify, WooCommerce, and works standalone for any business. Unlike UpPromote, we're not limited to one platform." },
     { question: 'Does UpPromote offer QR code tracking?', answer: 'No. UpPromote is designed for online affiliate and influencer marketing with digital referral links. ReferralSynch offers QR code and NFC tag tracking for businesses that want to capture referrals from physical touchpoints like business cards, receipts, and in-store displays.' },
     { question: 'Which is better for local businesses?', answer: 'ReferralSynch, without question. UpPromote is built for eCommerce stores on Shopify. ReferralSynch is built for local businesses—restaurants, salons, contractors, retail stores—with physical QR/NFC attribution that tracks real-world referrals.' },
-    { question: 'How does pricing compare?', answer: "Both platforms offer competitive pricing. UpPromote starts at $29.99/month for their Grow plan. ReferralSynch starts at $29/month for Starter. The main difference is what you get: UpPromote focuses on affiliate/influencer features, while ReferralSynch focuses on referral depth with fraud detection and physical attribution." },
+    { question: 'How does pricing compare?', answer: "Both platforms offer competitive pricing. UpPromote starts at $29.99/month for their Grow plan. ReferralSynch starts free, with Starter at $29/month. The main difference is what you get: UpPromote focuses on affiliate/influencer features, while ReferralSynch focuses on referral depth with fraud detection and physical attribution." },
   ];
 
   return (

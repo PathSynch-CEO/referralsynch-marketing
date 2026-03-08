@@ -517,7 +517,7 @@ const DemoPage = () => {
             color: 'rgba(255,255,255,0.65)',
             marginBottom: 32,
           }}>
-            Start your 14-day free trial today, or schedule a demo to see everything in action.
+            Start free today — no credit card required. Or schedule a demo to see everything in action.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
             <a

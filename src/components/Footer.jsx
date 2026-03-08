@@ -20,6 +20,9 @@ const Footer = () => {
         { name: 'Beauty & Wellness', href: '/industries/beauty-wellness' },
         { name: 'Food & Beverage', href: '/industries/food-beverage' },
         { name: 'Home Services', href: '/industries/home-services' },
+        { name: 'Auto Services', href: '/industries/auto-services' },
+        { name: 'Fitness Studios', href: '/industries/fitness' },
+        { name: 'Professional Services', href: '/industries/professional-services' },
         { name: 'eCommerce', href: '/industries/ecommerce' },
       ],
     },
@@ -27,6 +30,8 @@ const Footer = () => {
       title: 'Compare',
       links: [
         { name: 'vs ReferralCandy', href: '/compare/referralcandy' },
+        { name: 'vs Referral Factory', href: '/compare/referral-factory' },
+        { name: 'vs GrowSurf', href: '/compare/growsurf' },
         { name: 'vs Smile.io', href: '/compare/smile-io' },
         { name: 'vs Friendbuy', href: '/compare/friendbuy' },
         { name: 'vs UpPromote', href: '/compare/uppromote' },

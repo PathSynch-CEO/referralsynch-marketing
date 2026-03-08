@@ -100,11 +100,16 @@ const EnhancedNavigation = () => {
     { name: 'Beauty & Wellness', href: '/industries/beauty-wellness', icon: '\u{1F487}' },
     { name: 'Food & Beverage', href: '/industries/food-beverage', icon: '\u{1F37D}\uFE0F' },
     { name: 'Home Services', href: '/industries/home-services', icon: '\u{1F3E0}' },
+    { name: 'Auto Services', href: '/industries/auto-services', icon: '\u{1F697}' },
+    { name: 'Fitness Studios', href: '/industries/fitness', icon: '\u{1F4AA}' },
+    { name: 'Professional Services', href: '/industries/professional-services', icon: '\u{1F4BC}' },
     { name: 'eCommerce', href: '/industries/ecommerce', icon: '\u{1F6D2}' },
   ];
 
   const compareItems = [
     { name: 'vs ReferralCandy', href: '/compare/referralcandy' },
+    { name: 'vs Referral Factory', href: '/compare/referral-factory' },
+    { name: 'vs GrowSurf', href: '/compare/growsurf' },
     { name: 'vs Smile.io', href: '/compare/smile-io' },
     { name: 'vs Friendbuy', href: '/compare/friendbuy' },
     { name: 'vs UpPromote', href: '/compare/uppromote' },

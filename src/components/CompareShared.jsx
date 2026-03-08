@@ -72,7 +72,7 @@ export const CTABanner = ({ competitor }) => (
       Ready to switch from {competitor}?
     </h3>
     <p style={{ fontFamily: theme.fonts.body, fontSize: 16, color: 'rgba(255,255,255,0.8)', marginBottom: 24, maxWidth: 500, margin: '0 auto 24px' }}>
-      Get 3 months free when you migrate your referral program to ReferralSynch. We'll even help you transfer your existing advocates.
+      Start free today and we'll help you migrate your referral program and transfer your existing advocates.
     </p>
     <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
       <a href="/signup" style={{
@@ -80,7 +80,7 @@ export const CTABanner = ({ competitor }) => (
         backgroundColor: theme.colors.warmWhite, color: theme.colors.forest, borderRadius: 8,
         fontFamily: theme.fonts.body, fontSize: 16, fontWeight: 600, textDecoration: 'none',
       }}>
-        Start Free Trial <ArrowRight size={18} />
+        Get Started Free <ArrowRight size={18} />
       </a>
       <a href="/demo" style={{
         display: 'inline-flex', alignItems: 'center', gap: 8, padding: '16px 32px',
@@ -146,6 +146,8 @@ const CompareFooter = () => (
         {[
           { title: 'Compare', links: [
             { name: 'vs ReferralCandy', href: '/compare/referralcandy' },
+            { name: 'vs Referral Factory', href: '/compare/referral-factory' },
+            { name: 'vs GrowSurf', href: '/compare/growsurf' },
             { name: 'vs Smile.io', href: '/compare/smile-io' },
             { name: 'vs Friendbuy', href: '/compare/friendbuy' },
             { name: 'vs UpPromote', href: '/compare/uppromote' },

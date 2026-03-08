@@ -22,6 +22,9 @@ const SignupPage = () => {
     'Beauty & Wellness',
     'Food & Beverage',
     'Home Services',
+    'Auto Services',
+    'Fitness Studios',
+    'Professional Services',
     'eCommerce',
     'Other',
   ];
@@ -136,7 +139,7 @@ const SignupPage = () => {
           marginBottom: 12,
           lineHeight: 1.2,
         }}>
-          Start Your 14-Day<br />Free Trial
+          Get Started<br />Free Today
         </h1>
         <p style={{
           fontFamily: theme.fonts.body,
@@ -144,7 +147,7 @@ const SignupPage = () => {
           color: theme.colors.slate,
           marginBottom: 32,
         }}>
-          No credit card required. Full access to all features.
+          No credit card required. Free plan forever, or try paid plans free for 14 days.
         </p>
 
         <form onSubmit={handleSubmit}>

@@ -147,7 +147,7 @@ export const IndustryCTASection = ({ industry, headline }) => {
           {headline}
         </h2>
         <p style={{ fontFamily: theme.fonts.body, fontSize: 18, color: theme.colors.charcoal, marginBottom: 32, maxWidth: 600, margin: '0 auto 32px' }}>
-          Join hundreds of {industry.toLowerCase()} businesses growing through word-of-mouth. Start your 14-day free trial today.
+          Join hundreds of {industry.toLowerCase()} businesses growing through word-of-mouth. Start free today — no credit card required.
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="/signup" style={{
@@ -187,6 +187,9 @@ const IndustryFooter = () => (
             { name: 'Beauty & Wellness', href: '/industries/beauty-wellness' },
             { name: 'Food & Beverage', href: '/industries/food-beverage' },
             { name: 'Home Services', href: '/industries/home-services' },
+            { name: 'Auto Services', href: '/industries/auto-services' },
+            { name: 'Fitness', href: '/industries/fitness' },
+            { name: 'Professional Services', href: '/industries/professional-services' },
             { name: 'eCommerce', href: '/industries/ecommerce' },
           ]},
           { title: 'Product', links: [

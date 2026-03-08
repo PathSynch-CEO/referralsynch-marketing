@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
   QrCode, Shield, Trophy, CreditCard, BarChart3,
-  Sparkles, Check
+  Sparkles, Check, Zap, Link, Smartphone, Gift, Lock,
+  Users, Layers, Award
 } from 'lucide-react';
 import { theme } from '../theme';
 
@@ -86,34 +87,35 @@ const CapabilitiesSection = () => {
 
   const capabilities = [
     {
-      icon: QrCode, title: 'QR & NFC Attribution', color: '#3B82F6',
-      description: 'Track every referral touchpoint\u2014from shopping bags to business cards\u2014with 100% attribution accuracy.',
-      features: ['Unlimited QR code generation', 'NFC tag programming', 'Location-based analytics', 'Custom landing pages'],
+      icon: Zap, title: 'Referral Engine', color: '#3B82F6',
+      description: 'Launch referral campaigns in minutes — custom links, double-sided rewards, and automated email sequences that drive sharing.',
+      features: ['Custom referral links & landing pages', 'Double-sided rewards (referrer + friend)', 'Automated email & SMS sequences', 'A/B testing for campaigns'],
+      stat: '3x', statLabel: 'more referrals vs basic programs',
+    },
+    {
+      icon: QrCode, title: 'Physical-to-Digital', color: '#10B981',
+      badge: 'THE MOAT',
+      description: 'Track real-world referrals with QR codes on receipts, NFC tags on counters, and location-based attribution — no other platform does this.',
+      features: ['Unlimited QR code generation', 'NFC tag programming & tracking', 'Location-based analytics', 'Receipt & packaging integration'],
       stat: '100%', statLabel: 'attribution accuracy',
     },
     {
-      icon: Shield, title: 'Fraud Detection', color: '#EF4444',
-      description: 'Enterprise-grade protection with 13+ fraud detection types to keep your program clean.',
-      features: ['Self-referral blocking', 'VPN/proxy detection', 'Device fingerprinting', 'Risk scoring (0-100)'],
-      stat: '0.1%', statLabel: 'fraud rate vs 3% industry avg',
-    },
-    {
-      icon: Trophy, title: 'Gamification', color: '#F59E0B',
-      description: 'Turn advocates into champions with tiers, badges, streaks, and leaderboards.',
-      features: ['5 customizable VIP tiers', '20+ achievement badges', 'Streak rewards', 'Real-time leaderboards'],
+      icon: Trophy, title: 'Rewards & Gamification', color: '#F59E0B',
+      description: 'Turn advocates into champions with VIP tiers, achievement badges, streak rewards, and real-time leaderboards.',
+      features: ['5 customizable VIP tiers', '20+ achievement badges', 'Streak & milestone rewards', 'Real-time leaderboards'],
       stat: '47%', statLabel: 'higher engagement',
     },
     {
-      icon: CreditCard, title: 'Automated Payouts', color: '#10B981',
-      description: 'Pay advocates real cash via Stripe Connect\u2014automatically, securely, globally.',
-      features: ['Stripe Connect integration', 'Automatic transfers', 'Tax document generation', 'Multi-currency support'],
+      icon: Link, title: 'Integrations', color: '#8B5CF6',
+      description: 'Connect your stack — Shopify, Stripe, Klaviyo, Zapier, and more. Automated payouts via Stripe Connect mean advocates get paid without you lifting a finger.',
+      features: ['Stripe Connect automated payouts', 'Shopify & WooCommerce', 'Klaviyo, Mailchimp & Zapier', 'REST API for custom builds'],
       stat: '2-3 days', statLabel: 'average payout time',
     },
     {
-      icon: BarChart3, title: 'Analytics Dashboard', color: '#8B5CF6',
-      description: 'Real-time insights into every referral, conversion, and advocate performance.',
-      features: ['Conversion tracking', 'Advocate performance', 'Revenue attribution', 'Cohort analysis'],
-      stat: '50+', statLabel: 'tracking metrics',
+      icon: Shield, title: 'Trust & Security', color: '#EF4444',
+      description: 'Enterprise-grade fraud detection with 13+ check types — self-referral blocking, VPN detection, device fingerprinting, and behavioral analysis.',
+      features: ['13+ fraud detection types', 'Risk scoring (0-100)', 'Device fingerprinting', 'Behavioral pattern analysis'],
+      stat: '0.1%', statLabel: 'fraud rate vs 3% industry avg',
     },
   ];
 
@@ -134,7 +136,7 @@ const CapabilitiesSection = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
             <Sparkles size={24} color={theme.colors.gold} />
             <span style={{ fontFamily: theme.fonts.body, fontSize: 14, fontWeight: 600, color: theme.colors.sage, textTransform: 'uppercase', letterSpacing: '0.15em' }}>
-              Capabilities
+              Platform Capabilities
             </span>
           </div>
           <h2 style={{ fontFamily: theme.fonts.display, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, color: theme.colors.ink, marginBottom: 16 }}>
@@ -168,10 +170,27 @@ const CapabilitiesSection = () => {
                 borderRadius: 100,
                 fontFamily: theme.fonts.body, fontSize: 14, fontWeight: 500,
                 cursor: 'pointer', transition: 'all 0.2s ease',
+                position: 'relative',
               }}
             >
               <cap.icon size={18} />
-              {cap.title.split(' ')[0]}
+              {cap.title}
+              {cap.badge && activeTab === i && (
+                <span style={{
+                  position: 'absolute',
+                  top: -8,
+                  right: -4,
+                  backgroundColor: theme.colors.gold,
+                  color: theme.colors.ink,
+                  fontSize: 9,
+                  fontWeight: 700,
+                  padding: '2px 6px',
+                  borderRadius: 8,
+                  letterSpacing: '0.05em',
+                }}>
+                  {cap.badge}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -192,6 +211,19 @@ const CapabilitiesSection = () => {
               <span style={{ fontFamily: theme.fonts.body, fontSize: 13, fontWeight: 600, color: capabilities[activeTab].color }}>
                 {capabilities[activeTab].title}
               </span>
+              {capabilities[activeTab].badge && (
+                <span style={{
+                  backgroundColor: theme.colors.gold,
+                  color: theme.colors.ink,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  padding: '2px 8px',
+                  borderRadius: 8,
+                  marginLeft: 4,
+                }}>
+                  {capabilities[activeTab].badge}
+                </span>
+              )}
             </div>
             <h3 style={{ fontFamily: theme.fonts.display, fontSize: 32, fontWeight: 500, color: theme.colors.ink, marginBottom: 16, lineHeight: 1.3 }}>
               {capabilities[activeTab].description}

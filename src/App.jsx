@@ -16,6 +16,8 @@ const Security = lazy(() => import('./pages/security'));
 // Compare pages
 const CompareIndex = lazy(() => import('./pages/compare/index'));
 const VsReferralCandy = lazy(() => import('./pages/compare/referralcandy'));
+const VsReferralFactory = lazy(() => import('./pages/compare/referral-factory'));
+const VsGrowSurf = lazy(() => import('./pages/compare/growsurf'));
 const VsSmileIO = lazy(() => import('./pages/compare/smile-io'));
 const VsFriendbuy = lazy(() => import('./pages/compare/friendbuy'));
 const VsUpPromote = lazy(() => import('./pages/compare/uppromote'));
@@ -26,6 +28,9 @@ const RetailIndustry = lazy(() => import('./pages/industries/retail'));
 const BeautyIndustry = lazy(() => import('./pages/industries/beauty-wellness'));
 const FoodBeverageIndustry = lazy(() => import('./pages/industries/food-beverage'));
 const HomeServicesIndustry = lazy(() => import('./pages/industries/home-services'));
+const AutoServicesIndustry = lazy(() => import('./pages/industries/auto-services'));
+const FitnessIndustry = lazy(() => import('./pages/industries/fitness'));
+const ProfessionalServicesIndustry = lazy(() => import('./pages/industries/professional-services'));
 const EcommerceIndustry = lazy(() => import('./pages/industries/ecommerce'));
 
 function App() {
@@ -47,6 +52,8 @@ function App() {
           {/* Compare routes */}
           <Route path="/compare" element={<CompareIndex />} />
           <Route path="/compare/referralcandy" element={<VsReferralCandy />} />
+          <Route path="/compare/referral-factory" element={<VsReferralFactory />} />
+          <Route path="/compare/growsurf" element={<VsGrowSurf />} />
           <Route path="/compare/smile-io" element={<VsSmileIO />} />
           <Route path="/compare/friendbuy" element={<VsFriendbuy />} />
           <Route path="/compare/uppromote" element={<VsUpPromote />} />
@@ -57,6 +64,9 @@ function App() {
           <Route path="/industries/beauty-wellness" element={<BeautyIndustry />} />
           <Route path="/industries/food-beverage" element={<FoodBeverageIndustry />} />
           <Route path="/industries/home-services" element={<HomeServicesIndustry />} />
+          <Route path="/industries/auto-services" element={<AutoServicesIndustry />} />
+          <Route path="/industries/fitness" element={<FitnessIndustry />} />
+          <Route path="/industries/professional-services" element={<ProfessionalServicesIndustry />} />
           <Route path="/industries/ecommerce" element={<EcommerceIndustry />} />
         </Routes>
       </Suspense>
