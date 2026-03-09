@@ -651,6 +651,28 @@ const EnhancedNavigation = () => {
         {/* CTA + Mobile toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
           <a
+            href="/login"
+            onClick={(e) => { e.preventDefault(); handleNav('/login'); }}
+            style={{
+              fontFamily: theme.fonts.body,
+              fontSize: 14,
+              fontWeight: 600,
+              color: theme.colors.forest,
+              padding: '10px 22px',
+              borderRadius: 8,
+              border: `1px solid ${theme.colors.forest}`,
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              transition: 'background-color 0.2s',
+              backgroundColor: 'transparent',
+            }}
+            className="desktop-nav"
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = `${theme.colors.forest}08`; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+          >
+            Sign In
+          </a>
+          <a
             href="/signup"
             onClick={(e) => { e.preventDefault(); handleNav('/signup'); }}
             style={{
@@ -755,12 +777,28 @@ const EnhancedNavigation = () => {
             Pricing
           </a>
 
+          {/* Sign In (mobile) */}
+          <a
+            href="/login"
+            onClick={(e) => { e.preventDefault(); handleNav('/login'); }}
+            style={{
+              display: 'block', textAlign: 'center', marginTop: 20,
+              padding: '14px 24px', backgroundColor: 'transparent',
+              color: theme.colors.forest, borderRadius: 10,
+              border: `1px solid ${theme.colors.forest}`,
+              fontFamily: theme.fonts.body, fontSize: 16, fontWeight: 600,
+              textDecoration: 'none',
+            }}
+          >
+            Sign In
+          </a>
+
           {/* Start Free (mobile) */}
           <a
             href="/signup"
             onClick={(e) => { e.preventDefault(); handleNav('/signup'); }}
             style={{
-              display: 'block', textAlign: 'center', marginTop: 20,
+              display: 'block', textAlign: 'center', marginTop: 12,
               padding: '14px 24px', backgroundColor: theme.colors.forest,
               color: theme.colors.warmWhite, borderRadius: 10,
               fontFamily: theme.fonts.body, fontSize: 16, fontWeight: 600,

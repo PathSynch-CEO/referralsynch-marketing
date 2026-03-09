@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { AuthProvider } from './context/AuthContext';
 
 import Home from './pages/index';
 
@@ -12,6 +13,7 @@ const Contact = lazy(() => import('./pages/contact'));
 const Privacy = lazy(() => import('./pages/privacy'));
 const Terms = lazy(() => import('./pages/terms'));
 const Security = lazy(() => import('./pages/security'));
+const Dashboard = lazy(() => import('./pages/dashboard'));
 
 // Compare pages
 const CompareIndex = lazy(() => import('./pages/compare/index'));
@@ -35,7 +37,7 @@ const EcommerceIndustry = lazy(() => import('./pages/industries/ecommerce'));
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Suspense fallback={<div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif' }}>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -48,6 +50,7 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/security" element={<Security />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
           {/* Compare routes */}
           <Route path="/compare" element={<CompareIndex />} />
@@ -141,7 +144,7 @@ function App() {
           cursor: pointer;
         }
       `}</style>
-    </>
+    </AuthProvider>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight, Shield, Zap, Trophy, QrCode,
   Eye, EyeOff, Loader2, Users
@@ -6,7 +7,10 @@ import {
 import { theme } from '../theme';
 import Logo from '../components/Logo';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     businessName: '',
     email: '',
@@ -68,12 +72,27 @@ const SignupPage = () => {
 
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      // TODO: Replace with actual signup logic
-      console.log('Signup data:', formData);
-      window.location.href = 'https://pathmanager.pathsynch.com/referralsynch/onboarding';
+      const res = await fetch(`${API_URL}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          businessName: formData.businessName,
+          industry: formData.industry,
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.message || 'Registration failed');
+      }
+
+      const data = await res.json();
+      localStorage.setItem('referralsynch_token', data.token);
+      navigate('/dashboard');
     } catch (error) {
-      setErrors({ submit: 'Something went wrong. Please try again.' });
+      setErrors({ submit: error.message || 'Something went wrong. Please try again.' });
     } finally {
       setIsLoading(false);
     }
