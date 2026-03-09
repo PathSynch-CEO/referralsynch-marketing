@@ -955,31 +955,24 @@ const MajorCTASection = () => {
 const PricingSection = () => {
   const plans = [
     {
-      name: 'Free',
-      price: 0,
-      description: 'Get started with referrals — no credit card needed',
-      features: ['1 campaign', '50 advocates', 'QR tracking', 'Basic fraud checks', 'Email support'],
-      highlighted: false,
-    },
-    {
       name: 'Starter',
       price: 29,
-      description: 'For small businesses growing through referrals',
-      features: ['3 campaigns', '200 advocates', 'QR + NFC tracking', 'Full fraud detection', 'Stripe payouts'],
+      description: 'For small businesses starting with referrals',
+      features: ['1 campaign', '100 advocates', 'QR tracking', 'Fraud detection', 'Email support'],
       highlighted: false,
     },
     {
       name: 'Growth',
       price: 69,
       description: 'For businesses ready to scale word of mouth',
-      features: ['10 campaigns', '1,000 advocates', 'Gamification suite', 'Klaviyo + Zapier', 'Priority support'],
+      features: ['5 campaigns', '500 advocates', 'QR + NFC tracking', '5-tier gamification', 'Priority support'],
       highlighted: true,
     },
     {
-      name: 'Pro',
+      name: 'Scale',
       price: 179,
       description: 'For high-volume referral programs',
-      features: ['Unlimited campaigns', '5,000 advocates', 'White-label portal', 'API access', 'Dedicated CSM'],
+      features: ['Unlimited campaigns', '2,000 advocates', 'API access', 'White-label portal', 'Phone support'],
       highlighted: false,
     },
   ];
@@ -1055,9 +1048,9 @@ const PricingSection = () => {
               </h3>
               <div style={{ marginBottom: 8 }}>
                 <span style={{ fontFamily: theme.fonts.display, fontSize: 48, fontWeight: 500 }}>
-                  {plan.price === 0 ? 'Free' : `$${plan.price}`}
+                  ${plan.price}
                 </span>
-                {plan.price > 0 && <span style={{ color: 'rgba(255,255,255,0.7)' }}>/month</span>}
+                <span style={{ color: 'rgba(255,255,255,0.7)' }}>/month</span>
               </div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginBottom: 32 }}>
                 {plan.description}
@@ -1078,7 +1071,7 @@ const PricingSection = () => {
                 textDecoration: 'none',
                 marginBottom: 32,
               }}>
-                {plan.price === 0 ? 'Get Started Free' : 'Start Free Trial'}
+                Start Free Trial
               </a>
 
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>

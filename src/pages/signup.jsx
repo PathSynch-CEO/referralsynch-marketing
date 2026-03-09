@@ -12,6 +12,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const SignupPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    name: '',
     businessName: '',
     email: '',
     password: '',
@@ -50,6 +51,7 @@ const SignupPage = () => {
 
   const validateForm = () => {
     const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Your name is required';
     if (!formData.businessName.trim()) newErrors.businessName = 'Business name is required';
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -60,6 +62,8 @@ const SignupPage = () => {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 8) {
       newErrors.password = 'Password must be at least 8 characters';
+    } else if (!/[a-z]/.test(formData.password) || !/[A-Z]/.test(formData.password) || !/[0-9]/.test(formData.password)) {
+      newErrors.password = 'Must include uppercase, lowercase, and a number';
     }
     if (!formData.industry) newErrors.industry = 'Please select your industry';
     setErrors(newErrors);
@@ -76,6 +80,7 @@ const SignupPage = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          name: formData.name,
           email: formData.email,
           password: formData.password,
           businessName: formData.businessName,
@@ -85,7 +90,7 @@ const SignupPage = () => {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.message || 'Registration failed');
+        throw new Error(body.error || body.message || 'Registration failed');
       }
 
       const data = await res.json();
@@ -158,7 +163,7 @@ const SignupPage = () => {
           marginBottom: 12,
           lineHeight: 1.2,
         }}>
-          Get Started<br />Free Today
+          Start Your<br />Free Trial
         </h1>
         <p style={{
           fontFamily: theme.fonts.body,
@@ -166,10 +171,25 @@ const SignupPage = () => {
           color: theme.colors.slate,
           marginBottom: 32,
         }}>
-          No credit card required. Free plan forever, or try paid plans free for 14 days.
+          No credit card required. 14-day free trial on all plans.
         </p>
 
         <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: 20 }}>
+            <label style={labelStyle}>Your Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Jane Smith"
+              style={{ ...inputStyle, borderColor: errors.name ? theme.colors.red : theme.colors.mint }}
+              onFocus={(e) => e.target.style.borderColor = theme.colors.forest}
+              onBlur={(e) => e.target.style.borderColor = errors.name ? theme.colors.red : theme.colors.mint}
+            />
+            {errors.name && <p style={errorStyle}>{errors.name}</p>}
+          </div>
+
           <div style={{ marginBottom: 20 }}>
             <label style={labelStyle}>Business Name</label>
             <input
@@ -208,7 +228,7 @@ const SignupPage = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Minimum 8 characters"
+                placeholder="Min 8 chars, upper + lower + number"
                 style={{ ...inputStyle, paddingRight: 48, borderColor: errors.password ? theme.colors.red : theme.colors.mint }}
                 onFocus={(e) => e.target.style.borderColor = theme.colors.forest}
                 onBlur={(e) => e.target.style.borderColor = errors.password ? theme.colors.red : theme.colors.mint}

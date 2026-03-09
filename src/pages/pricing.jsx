@@ -73,10 +73,10 @@ const PricingToggle = ({ isAnnual, setIsAnnual }) => (
 // PRICING CARD
 // =============================================================================
 const PricingCard = ({ plan, isAnnual, isPopular }) => {
-  const isFree = plan.price === 0;
+  const isEnterprise = plan.price === null;
   const monthlyPrice = plan.price;
-  const annualPrice = isFree ? 0 : Math.round(plan.price * 0.8);
-  const displayPrice = isAnnual ? annualPrice : monthlyPrice;
+  const annualPrice = isEnterprise ? null : Math.round(plan.price * 0.8);
+  const displayPrice = isEnterprise ? null : (isAnnual ? annualPrice : monthlyPrice);
 
   return (
     <div style={{
@@ -116,18 +116,18 @@ const PricingCard = ({ plan, isAnnual, isPopular }) => {
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
           <span style={{ fontFamily: theme.fonts.display, fontSize: 48, fontWeight: 500, color: theme.colors.ink }}>
-            {isFree ? 'Free' : `$${displayPrice}`}
+            {isEnterprise ? 'Custom' : `$${displayPrice}`}
           </span>
-          {!isFree && <span style={{ fontFamily: theme.fonts.body, fontSize: 16, color: theme.colors.slate }}>/month</span>}
+          {!isEnterprise && <span style={{ fontFamily: theme.fonts.body, fontSize: 16, color: theme.colors.slate }}>/month</span>}
         </div>
-        {isAnnual && !isFree && (
+        {isAnnual && !isEnterprise && (
           <p style={{ fontFamily: theme.fonts.body, fontSize: 13, color: theme.colors.sage, marginTop: 4 }}>
             billed at ${annualPrice * 12}/year (save ${(monthlyPrice - annualPrice) * 12})
           </p>
         )}
-        {isFree && (
+        {isEnterprise && (
           <p style={{ fontFamily: theme.fonts.body, fontSize: 13, color: theme.colors.sage, marginTop: 4 }}>
-            Forever free — no credit card required
+            Tailored to your business needs
           </p>
         )}
         <p style={{ fontFamily: theme.fonts.body, fontSize: 13, color: theme.colors.slate, marginTop: 8 }}>
@@ -136,7 +136,7 @@ const PricingCard = ({ plan, isAnnual, isPopular }) => {
       </div>
 
       <a
-        href="/signup"
+        href={isEnterprise ? '/demo' : '/signup'}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -336,19 +336,19 @@ const ComparePlansTable = () => {
     setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
-  const plans = ['Free', 'Starter', 'Growth', 'Pro'];
+  const plans = ['Starter', 'Growth', 'Scale', 'Enterprise'];
 
   const sections = [
     {
       id: 'referrals',
       title: 'Referral Campaigns',
       features: [
-        { name: 'Active campaigns', values: ['1', '3', '10', 'Unlimited'] },
-        { name: 'Monthly advocates', values: ['50', '200', '1,000', '5,000'] },
+        { name: 'Active campaigns', values: ['1', '5', 'Unlimited', 'Unlimited'] },
+        { name: 'Monthly advocates', values: ['100', '500', '2,000', 'Unlimited'] },
         { name: 'Custom reward rules', values: [false, true, true, true] },
         { name: 'Double-sided rewards', values: [true, true, true, true] },
         { name: 'Email sequences', values: [false, true, true, true] },
-        { name: 'A/B testing', values: [false, false, true, true] },
+        { name: 'A/B testing', values: [false, true, true, true] },
       ],
     },
     {
@@ -358,8 +358,8 @@ const ComparePlansTable = () => {
         { name: 'QR code generation', values: [true, true, true, true] },
         { name: 'Dynamic QR codes', values: [false, true, true, true] },
         { name: 'NFC tag support', values: [false, true, true, true] },
-        { name: 'Location-based tracking', values: [false, false, true, true] },
-        { name: 'Custom landing pages', values: [false, false, true, true] },
+        { name: 'Location-based tracking', values: [false, true, true, true] },
+        { name: 'Custom landing pages', values: [false, true, true, true] },
       ],
     },
     {
@@ -371,8 +371,8 @@ const ComparePlansTable = () => {
         { name: 'VPN/Proxy detection', values: [false, true, true, true] },
         { name: 'Device fingerprinting', values: [false, true, true, true] },
         { name: 'Velocity abuse detection', values: [false, true, true, true] },
-        { name: 'Behavioral analysis', values: [false, false, true, true] },
-        { name: 'Payment matching', values: [false, false, false, true] },
+        { name: 'Behavioral analysis', values: [false, true, true, true] },
+        { name: 'Payment matching', values: [false, false, true, true] },
         { name: 'Risk score (0-100)', values: [false, true, true, true] },
       ],
     },
@@ -381,10 +381,10 @@ const ComparePlansTable = () => {
       title: 'Gamification',
       features: [
         { name: 'Leaderboards', values: [false, true, true, true] },
-        { name: 'Achievement badges', values: [false, '5', '20+', 'Custom'] },
-        { name: 'VIP tiers', values: [false, false, '5', 'Custom'] },
-        { name: 'Streak rewards', values: [false, false, true, true] },
-        { name: 'Milestone bonuses', values: [false, false, true, true] },
+        { name: 'Achievement badges', values: [false, '20+', 'Custom', 'Custom'] },
+        { name: 'VIP tiers', values: [false, '5', 'Custom', 'Custom'] },
+        { name: 'Streak rewards', values: [false, true, true, true] },
+        { name: 'Milestone bonuses', values: [false, true, true, true] },
       ],
     },
     {
@@ -394,8 +394,8 @@ const ComparePlansTable = () => {
         { name: 'Discount codes', values: [true, true, true, true] },
         { name: 'Store credit', values: [false, true, true, true] },
         { name: 'Stripe Connect payouts', values: [false, true, true, true] },
-        { name: 'Custom reward types', values: [false, false, false, true] },
-        { name: 'Bulk payouts', values: [false, false, false, true] },
+        { name: 'Custom reward types', values: [false, false, true, true] },
+        { name: 'Bulk payouts', values: [false, false, true, true] },
       ],
     },
     {
@@ -404,11 +404,11 @@ const ComparePlansTable = () => {
       features: [
         { name: 'Email support', values: [true, true, true, true] },
         { name: 'Live chat', values: [false, true, true, true] },
-        { name: 'Phone support', values: [false, false, false, true] },
+        { name: 'Phone support', values: [false, false, true, true] },
         { name: 'Dedicated CSM', values: [false, false, false, true] },
-        { name: 'White-glove onboarding', values: [false, false, true, true] },
-        { name: 'API access', values: [false, false, false, true] },
-        { name: 'White-label portal', values: [false, false, false, true] },
+        { name: 'White-glove onboarding', values: [false, true, true, true] },
+        { name: 'API access', values: [false, false, true, true] },
+        { name: 'White-label portal', values: [false, false, true, true] },
       ],
     },
   ];
@@ -445,7 +445,7 @@ const ComparePlansTable = () => {
                 {plan}
               </div>
               <div style={{ fontFamily: theme.fonts.body, fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>
-                {['Free', '$29', '$69', '$179'][i]}{i > 0 ? '/mo' : ''}
+                {['$29', '$69', '$179', 'Custom'][i]}{i < 3 ? '/mo' : ''}
               </div>
             </div>
           ))}
@@ -521,16 +521,16 @@ const ComparePlansTable = () => {
           {plans.map((plan, i) => (
             <a
               key={plan}
-              href="/signup"
+              href={i === 3 ? '/demo' : '/signup'}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 8,
                 padding: '12px 16px',
-                backgroundColor: i === 2 ? theme.colors.forest : 'transparent',
-                color: i === 2 ? theme.colors.warmWhite : theme.colors.forest,
-                border: i === 2 ? 'none' : `2px solid ${theme.colors.forest}`,
+                backgroundColor: i === 1 ? theme.colors.forest : 'transparent',
+                color: i === 1 ? theme.colors.warmWhite : theme.colors.forest,
+                border: i === 1 ? 'none' : `2px solid ${theme.colors.forest}`,
                 borderRadius: 8,
                 fontFamily: theme.fonts.body,
                 fontSize: 14,
@@ -538,7 +538,7 @@ const ComparePlansTable = () => {
                 textDecoration: 'none',
               }}
             >
-              {i === 0 ? 'Get Started Free' : 'Start Free Trial'}
+              {i === 3 ? 'Contact Us' : 'Start Free Trial'}
             </a>
           ))}
         </div>
@@ -555,8 +555,8 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: 'Is the Free plan really free?',
-      answer: 'Yes! The Free plan is free forever with up to 50 advocates and 1 campaign. No credit card required. Paid plans include a 14-day free trial with full access. Cancel anytime during the trial and you won\'t be charged.',
+      question: 'Is there a free trial?',
+      answer: 'Yes! All plans include a 14-day free trial with full access. No credit card required to start. Cancel anytime during the trial and you won\'t be charged.',
     },
     {
       question: 'What happens when I exceed my advocate limit?',
@@ -572,7 +572,7 @@ const FAQSection = () => {
     },
     {
       question: 'Is there a setup fee?',
-      answer: 'No setup fees on any plan. Growth and Pro plans include white-glove onboarding assistance at no extra cost.',
+      answer: 'No setup fees on any plan. Growth and above include white-glove onboarding assistance at no extra cost.',
     },
     {
       question: 'Do you charge success fees or commissions?',
@@ -584,7 +584,7 @@ const FAQSection = () => {
     },
     {
       question: 'What integrations are included?',
-      answer: 'Starter and above include Shopify, WooCommerce, and Stripe integrations. Growth adds Klaviyo, Mailchimp, and Zapier. Pro includes API access for custom integrations.',
+      answer: 'All plans include Shopify, WooCommerce, and Stripe integrations. Growth adds Klaviyo, Mailchimp, and Zapier. Scale includes API access for custom integrations.',
     },
   ];
 
@@ -657,7 +657,7 @@ const CTASection = () => (
         Need Something Custom?
       </h2>
       <p style={{ fontFamily: theme.fonts.body, fontSize: 18, color: theme.colors.charcoal, marginBottom: 32, maxWidth: 500, margin: '0 auto 32px' }}>
-        For businesses needing custom integrations, higher volumes, or dedicated support beyond Pro — let's talk.
+        For businesses needing custom integrations, higher volumes, or dedicated support — let's talk.
       </p>
       <a href="/demo" style={{
         display: 'inline-flex',
@@ -686,66 +686,65 @@ const PricingPage = () => {
 
   const plans = [
     {
-      name: 'Free',
-      price: 0,
-      description: 'Get started with referrals — no credit card required',
-      advocateLimit: 'Up to 50 advocates',
-      cta: 'Get Started Free',
-      features: [
-        '1 referral campaign',
-        'QR code generation',
-        'Basic fraud detection (3 types)',
-        'Discount code rewards',
-        'Email support',
-        'Community access',
-      ],
-    },
-    {
       name: 'Starter',
       price: 29,
-      description: 'For small businesses growing through referrals',
-      advocateLimit: 'Up to 200 advocates',
+      description: 'For small businesses starting with referrals',
+      advocateLimit: 'Up to 100 advocates',
       cta: 'Start Free Trial',
       features: [
-        '3 referral campaigns',
-        'QR + NFC tracking',
-        'Full fraud detection (13+ types)',
-        'Stripe Connect payouts',
-        'Shopify + WooCommerce',
-        'Live chat support',
+        '1 referral campaign',
+        'QR code tracking',
+        'Fraud detection included',
+        'Discount code rewards',
+        'Email support',
+        '14-day free trial',
       ],
     },
     {
       name: 'Growth',
       price: 69,
       description: 'For businesses ready to scale word of mouth',
-      advocateLimit: 'Up to 1,000 advocates',
+      advocateLimit: 'Up to 500 advocates',
       cta: 'Start Free Trial',
       features: [
-        '10 referral campaigns',
-        'Advanced attribution & NFC',
-        'Gamification suite (5 tiers)',
+        '5 referral campaigns',
+        'QR + NFC tracking',
+        'Stripe Connect payouts',
+        '5-tier gamification suite',
         'Klaviyo, Mailchimp & Zapier',
-        'A/B testing',
         'Priority support',
-        'Custom landing pages',
+        '14-day free trial',
       ],
     },
     {
-      name: 'Pro',
+      name: 'Scale',
       price: 179,
       description: 'For high-volume referral programs',
-      advocateLimit: 'Up to 5,000 advocates',
+      advocateLimit: 'Up to 2,000 advocates',
       cta: 'Start Free Trial',
       features: [
         'Unlimited campaigns',
-        'Behavioral fraud analysis',
-        'White-label portal',
+        'Everything in Growth',
         'API access',
-        'Dedicated CSM',
+        'White-label portal',
+        'Behavioral fraud analysis',
         'Phone support',
-        'Custom reward types',
+        '14-day free trial',
+      ],
+    },
+    {
+      name: 'Enterprise',
+      price: null,
+      description: 'For organizations needing custom solutions',
+      advocateLimit: 'Unlimited advocates',
+      cta: 'Contact Us',
+      features: [
+        'Unlimited everything',
+        'Dedicated account manager',
+        'Custom integrations',
         'SLA guarantee',
+        'White-glove onboarding',
+        'Volume discounts',
       ],
     },
   ];
@@ -761,7 +760,7 @@ const PricingPage = () => {
             Simple, Transparent Pricing
           </h1>
           <p style={{ fontFamily: theme.fonts.body, fontSize: 18, color: theme.colors.charcoal, maxWidth: 600, margin: '0 auto 32px' }}>
-            Start free, upgrade when you're ready. No hidden fees. No success fees. Cancel anytime.
+            14-day free trial on every plan. No hidden fees. No success fees. Cancel anytime.
           </p>
           <PricingToggle isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
         </section>
@@ -770,10 +769,10 @@ const PricingPage = () => {
         <section style={{ padding: '0 32px 60px' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
             {plans.map((plan, i) => (
-              <PricingCard 
-                key={plan.name} 
-                plan={plan} 
-                isAnnual={isAnnual} 
+              <PricingCard
+                key={plan.name}
+                plan={plan}
+                isAnnual={isAnnual}
                 isPopular={i === 1}
               />
             ))}
