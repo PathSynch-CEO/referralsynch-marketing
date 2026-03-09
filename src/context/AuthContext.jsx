@@ -52,7 +52,7 @@ export function AuthProvider({ children }) {
 
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
-      throw new Error(body.message || 'Login failed');
+      throw new Error(body.error || body.message || 'Login failed');
     }
 
     const data = await res.json();
